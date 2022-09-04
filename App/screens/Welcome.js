@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
     color: colors.white,
     textAlign: "center",
   },
+  inputContainer: {
+    marginBottom: 10,
+  },
   header: {
     alignItems: "flex-end",
     marginHorizontal: 20,
@@ -91,53 +94,8 @@ export default ({ navigation }) => {
             />
           </View>
           <Text style={styles.textHeader}>☀️ Valencia Nomads 🌍🚀</Text>
-          <ConversionInput
-            placeholder={"Email"}
-            value={username}
-            setValue={setUsername}
-            icon=<Entypo name="user" size={23} color={colors.black} />
-          />
-          <ConversionInput
-            value={password}
-            setValue={setPassword}
-            hidden={true}
-            placeholder={"Password"}
-            icon=<Entypo name="lock" size={23} color={colors.black} />
-          />
-          <CustomButton
-            onPressButton={() => navigation.push("Welcome")}
-            text="Login"
-            type="login"
-          />
-          <Button
-            text="Forgot password ?"
-            onPress={() => alert("Forgot password ?")}
-          />
-          <CustomButton
-            onPressButton={() => alert("SignIn with Facebook !")}
-            text="SignIn with Facebook"
-            bgColor="#E7EAF4"
-            fgColor="#4765A9"
-            type="register"
-          />
-          <CustomButton
-            bgColor="#FAE9EA"
-            fgColor="#DD4D44"
-            onPressButton={() => alert("SignIn with Google !")}
-            text="SignIn with Google"
-            type="register"
-          />
-          <CustomButton
-            onPressButton={() => alert("SignIn with Apple !")}
-            text="SignIn with Apple"
-            type="register"
-            bgColor="#e3e3e3"
-            fgColor="#363636"
-          />
-          <Button
-            text="Don't have an account? create one"
-            onPress={() => alert("Forgot password ?")}
-          />
+          <View style={styles.inputContainer}></View>
+
           <KeyboardSpacer
             onToggle={(keyboardIsVisible) =>
               setScrollEnabled(keyboardIsVisible)

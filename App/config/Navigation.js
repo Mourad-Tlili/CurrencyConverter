@@ -7,6 +7,8 @@ import colors from "../constants/colors";
 import Home from "../screens/Home";
 import Options from "../screens/Options";
 import CurrencyList from "../screens/CurrencyList";
+import Welcome from "../screens/Welcome";
+
 import { ConversionContextProvider } from "../util/ConversionContext";
 
 const MainStack = createStackNavigator();
@@ -18,11 +20,21 @@ const MainStackScreen = () => (
       options={{ headerShown: false }}
     />
     <MainStack.Screen name="Options" component={Options} />
+    <MainStack.Screen
+      name="Welcome"
+      component={Welcome}
+      options={{ headerShown: false }}
+    />
   </MainStack.Navigator>
 );
 const ModalStack = createStackNavigator();
 const ModalStackScreen = () => (
   <ModalStack.Navigator mode="modal">
+    <ModalStack.Screen
+      name="Main"
+      component={MainStackScreen}
+      options={{ headerShown: false }}
+    />
     <ModalStack.Screen
       name="Main"
       component={MainStackScreen}
@@ -53,7 +65,7 @@ const ModalStackScreen = () => (
 export default () => (
   <NavigationContainer>
     <ConversionContextProvider>
-      <ModalStackScreen />
+      <MainStackScreen />
     </ConversionContextProvider>
   </NavigationContainer>
 );

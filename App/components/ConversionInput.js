@@ -31,7 +31,15 @@ const styles = StyleSheet.create({
   input: { flex: 1, padding: 10, color: colors.textLight },
 });
 
-export const ConversionInput = ({ text, onButtonPress, ...props }) => {
+export const ConversionInput = ({
+  onButtonPress,
+  icon,
+  placeholder,
+  hidden,
+  value,
+  setValue,
+  ...props
+}) => {
   const containerStyles = [styles.container];
 
   if (props.editable === false) {
@@ -40,9 +48,16 @@ export const ConversionInput = ({ text, onButtonPress, ...props }) => {
   return (
     <View style={containerStyles}>
       <TouchableOpacity onPress={onButtonPress} style={styles.button}>
-        <Text style={styles.buttonText}> {text}</Text>
+        {icon}
       </TouchableOpacity>
-      <TextInput style={styles.input} {...props} />
+      <TextInput
+        value={value}
+        onChangeText={setValue}
+        placeholder={placeholder}
+        style={styles.input}
+        secureTextEntry={hidden}
+        {...props}
+      />
     </View>
   );
 };
